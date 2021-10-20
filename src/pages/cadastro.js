@@ -1,5 +1,6 @@
 import React from 'react'
 import SideBar from '../components/sidebar'
+import Form from '../components/form'
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -13,6 +14,7 @@ const Index = () => {
         <>
             <Content>
                 <SideBar />
+                <Form />
             </Content>
         </>
     )

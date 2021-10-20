@@ -1,0 +1,30 @@
+{
+  "clientes": [
+    {
+      "nome": "André Beolchi de",
+      "sobrenome": "Garbini",
+      "email": "andregarbini2001@gmail.com",
+      "tel": "111111111111",
+      "cep": "04072-030",
+      "endereco1": "Rua Miquelino Gabriel Frag",
+      "endereco2": "a",
+      "dataNascimento": "0065-05-04",
+      "cpf": "565612132",
+      "renda": "100",
+      "id": 1
+    },
+    {
+      "nome": "André Beolchi de",
+      "sobrenome": "Garbini",
+      "email": "andregarbini2001@gmail.com",
+      "tel": "11968349464",
+      "cep": "04072-030",
+      "endereco1": "Rua Miquelino Gabriel Fraga",
+      "endereco2": "Rua Miquelino Gabriel Fraga",
+      "dataNascimento": "2001-07-27",
+      "cpf": "99999999999",
+      "renda": "9999",
+      "id": 2
+    }
+  ]
+}
