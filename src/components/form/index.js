@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
+import {MdHomeWork, MdPerson, MdInfo} from 'react-icons/md'
 import axios from 'axios';
 import { FormCard,
          FormWrapper,
@@ -63,15 +64,15 @@ const Form = () => {
                     <FormH1>Cadastro de Clientes</FormH1>
                     <StepsWrapper>
                         <Step>
-                            <StepIcon>D</StepIcon>
+                            <MdPerson/>
                             <StepName>Dados</StepName>
                         </Step>
                         <Step>
-                            <StepIcon>E</StepIcon>
+                            <MdHomeWork/>
                             <StepName>Endereço</StepName>
                         </Step>
                         <Step>
-                            <StepIcon>O</StepIcon>
+                            <MdInfo/>
                             <StepName>Outros</StepName>
                         </Step>
                     </StepsWrapper>

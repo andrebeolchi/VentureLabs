@@ -1,12 +1,6 @@
 import React from 'react'
 import SideBar from '../components/sidebar'
-import styled from 'styled-components';
-
-const Content = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-
+import {Content} from '../components/global/Styled'
 
 const Index = () => {
     return (

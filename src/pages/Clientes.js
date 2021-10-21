@@ -1,17 +1,17 @@
 import React from 'react'
 import SideBar from '../components/sidebar'
-import Form from '../components/form'
+import ListaClientes from '../components/lista_clientes'
 import {Content} from '../components/global/Styled'
 
-const Index = () => {
+const Clientes = () => {
     return (
         <>
             <Content>
-                <SideBar />
-                <Form />
+                <SideBar/>
+                <ListaClientes/>
             </Content>
         </>
     )
 }
 
-export default Index
+export default Clientes
