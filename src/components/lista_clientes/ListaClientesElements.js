@@ -2,13 +2,18 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Color} from '../global/Color'
 
+// var iHeight = window.innerHeight()
+
 export const ListaContainer = styled.div`
     width: 100%;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+
 `
 
 export const ListaWrapper = styled.div`
@@ -16,7 +21,7 @@ export const ListaWrapper = styled.div`
     border-radius: 8px;
     padding: 16px;
     min-width: 80%;;
-    max-height: 80vh;
+    max-height: 60vh;
     overflow-y: auto;
 
     ::-webkit-scrollbar{
@@ -38,22 +43,19 @@ export const Linha = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 32px;
-    border-top: 1px solid ${Color.gray};
-
+    border-bottom: 1px solid ${Color.gray};
     
-    &:last-child {
-        border-bottom: 1px solid ${Color.gray};
-    }
-
     &:hover{
         background: ${Color.lightgray};
         font-weight: 600;
     }
-    }
     
-`
+    
+    `
 
 export const ListaH1 = styled.h1`
+    position: sticky;
+    top: 0;
     font-size: 24px;
     text-align: center;
     margin-bottom: 24px;
