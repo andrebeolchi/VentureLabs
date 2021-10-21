@@ -46,12 +46,25 @@ export const StepsWrapper = styled.div`
 `
 
 export const Step = styled.div`
-`
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-export const StepIcon = styled.p`
+    position: relative;
+    z-index: 2;
+
+    height: 80px;
+    width: 80px;
+    padding: 8px;
+    border-radius: 4px;
+
+    background-color: ${({isHere}) => (isHere ? Color.blue : Color.gray)};
+    color: ${({isHere}) => (isHere ? Color.white : Color.darkgray)};
 `
 
 export const StepName = styled.p`
+    margin-top: 8px;
 `
 
 // --------- Form
@@ -74,6 +87,8 @@ export const Input = styled.input`
     margin-bottom: 32px;
     border: 1px solid ${Color.gray};
     border-radius: 4px;
+    max-height: 50px;
+    width: 100%;
     
     &:hover{
         border: 1px solid ${Color.lightblue};
@@ -83,6 +98,14 @@ export const Input = styled.input`
         border: 1px solid ${Color.blue};
     }    
 
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
 `
 
 export const ButtonWrapper = styled.div`
@@ -91,6 +114,10 @@ export const ButtonWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap-reverse;
+    
+    &:last-of-type {
+        margin-top: auto;
+    }
 `
 
 export const FormButton = styled.button`
@@ -101,11 +128,19 @@ export const FormButton = styled.button`
     
     background-color: ${({isNext}) => (isNext ? Color.blue : Color.gray)};       
     color: ${Color.white};
+    opacity: 0.9;
     
     font-size: 20px;
     cursor: pointer;
 
     &:only-child{
         width: 100%;
+    }
+
+    &:focus, &:hover {
+        opacity: 1;
+        transform: scale(1.02);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
     }
 `

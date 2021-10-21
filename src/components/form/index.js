@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import {MdHomeWork, MdPerson, MdInfo} from 'react-icons/md'
+import {Color} from '../global/Color'
+import {IconContext} from 'react-icons'
 import axios from 'axios';
 import { FormCard,
          FormWrapper,
          FormH1,
          StepsWrapper,
          Step,
-         StepIcon,
          StepName,
          FormContent,
          Label,
@@ -59,54 +60,56 @@ const Form = () => {
 
     return (
         <>
-            <FormCard>
-                <FormWrapper>
-                    <FormH1>Cadastro de Clientes</FormH1>
-                    <StepsWrapper>
-                        <Step>
-                            <MdPerson/>
-                            <StepName>Dados</StepName>
-                        </Step>
-                        <Step>
-                            <MdHomeWork/>
-                            <StepName>Endereço</StepName>
-                        </Step>
-                        <Step>
-                            <MdInfo/>
-                            <StepName>Outros</StepName>
-                        </Step>
-                    </StepsWrapper>
+            <IconContext.Provider value={{size:"28px", color: `${Color.white}` }}>
+                <FormCard>
+                    <FormWrapper>
+                        
+                        <FormH1>Cadastro de Clientes</FormH1>
+                        <StepsWrapper>
+                            <Step isHere={(step === 1)}>
+                                <MdPerson/>
+                                <StepName>Dados</StepName>
+                            </Step>
+                            <Step isHere={(step === 2)}>
+                                <MdHomeWork/>
+                                <StepName>Endereço</StepName>
+                            </Step>
+                            <Step  isHere={(step === 3)}>
+                                <MdInfo/>
+                                <StepName>Outros</StepName>
+                            </Step>
+                        </StepsWrapper>
+                        <FormContent onSubmit={onSubmit}>
+                            {step === 1 && <Dados 
+                                                next= {goNextStep}
+                                                onChange= {onChange}
+                                                nome={dados.nome}
+                                                sobrenome={dados.sobrenome}
+                                                email={dados.email}
+                                                tel={dados.tel}
+                                            />}
 
-                    <FormContent onSubmit={onSubmit}>
-                        {step === 1 && <Dados 
-                                            next= {goNextStep}
-                                            onChange= {onChange}
-                                            nome={dados.nome}
-                                            sobrenome={dados.sobrenome}
-                                            email={dados.email}
-                                            tel={dados.tel}
-                                        />}
+                            {step === 2 && <Endereco
+                                                next={goNextStep}
+                                                back={goBackStep}
+                                                onChange= {onChange}
+                                                cep= {dados.cep}
+                                                endereco1= {dados.endereco1}
+                                                endereco2= {dados.endereco2}
+                                            />}
 
-                        {step === 2 && <Endereco
-                                            next={goNextStep}
-                                            back={goBackStep}
-                                            onChange= {onChange}
-                                            cep= {dados.cep}
-                                            endereco1= {dados.endereco1}
-                                            endereco2= {dados.endereco2}
-                                        />}
-
-                        {step === 3 && <Outros 
-                                            next={goNextStep}
-                                            back={goBackStep}
-                                            onChange= {onChange}
-                                            dataNascimento = {dados.dataNascimento}
-                                            cpf = {dados.cpf}
-                                            renda = {dados.renda}
-                                        />}
-                    </FormContent>
-                </FormWrapper>
-            </FormCard>
+                            {step === 3 && <Outros 
+                                                next={goNextStep}
+                                                back={goBackStep}
+                                                onChange= {onChange}
+                                                dataNascimento = {dados.dataNascimento}
+                                                cpf = {dados.cpf}
+                                                renda = {dados.renda}
+                                            />}
+                        </FormContent>
+                    </FormWrapper>
+                </FormCard>
+            </IconContext.Provider>
         </>
     )
 }
