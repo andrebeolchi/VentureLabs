@@ -1,34 +1,23 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom'
 import {MdHomeWork, MdPerson, MdInfo} from 'react-icons/md'
-import {Color} from '../global/Color'
 import {IconContext} from 'react-icons'
 import axios from 'axios';
-import { FormCard,
+import { Container,
          FormWrapper,
          FormH1,
          StepsWrapper,
          Step,
          StepName,
-         FormContent,
-         Label,
-         Input,
-         ButtonWrapper,
-         FormButton} from './FormElements';
+         FormContent} from './FormElements';
+import { Dados, Endereco, Outros} from './Forms';
 
 const Form = () => {
     const [step, setStep] = useState(1);
 
     const history = useHistory();
-
-    function goNextStep() {
-        if (step === 3) return;
-        setStep((step) => step + 1);
-    }
-
-    function goBackStep() {
-        setStep(step => step - 1);
-    }
+    
+    const [alertOpen, setAlertOpen] = useState(false);
 
     const [dados, setDados] = useState({
         nome: '',
@@ -43,6 +32,35 @@ const Form = () => {
         renda: ''
     });
 
+    function goNextStep() {
+        switch(step) {
+            case 1:
+                if ((dados.nome === "") || (dados.sobrenome === "") || (dados.email === "") || (dados.tel === "")){
+                    return setAlertOpen(true)
+                } else {
+                    setAlertOpen(false)
+                    return setStep((step) => step + 1);
+                    }
+            case 2:
+                if ((dados.cep === "") || (dados.endereco1 === "") || (dados.endereco2 === "")){
+                    return setAlertOpen(true)
+                } else {
+                    setAlertOpen(false)
+                    return setStep((step) => step + 1);
+                }
+            case 3:
+                setAlertOpen(false)
+                return setAlertOpen(false);
+            default:
+                return console.log("default");
+        }
+    }
+
+    function goBackStep() {
+        setStep(step => step - 1);
+    }
+
+
     function onChange(ev){
         const { name, value } = ev.target;
 
@@ -52,18 +70,21 @@ const Form = () => {
     function onSubmit(ev){
         ev.preventDefault();
 
-        axios.post('http://localhost:8000/clientes', dados)
+        if ((dados.dataNascimento === "") || (dados.cpf === "") || (dados.renda === "")){
+            return setAlertOpen(true)
+        } else {
+            axios.post('http://localhost:8000/cliente', dados)
             .then((response) => {
                 history.push('/');
             });
+        }
     }
 
     return (
         <>
-            <IconContext.Provider value={{size:"28px", color: `${Color.white}` }}>
-                <FormCard>
+            <IconContext.Provider value={{size:"28px", color: 'inherit' }}>
+                <Container>
                     <FormWrapper>
-                        
                         <FormH1>Cadastro de Clientes</FormH1>
                         <StepsWrapper>
                             <Step isHere={(step === 1)}>
@@ -79,6 +100,7 @@ const Form = () => {
                                 <StepName>Outros</StepName>
                             </Step>
                         </StepsWrapper>
+                        
                         <FormContent onSubmit={onSubmit}>
                             {step === 1 && <Dados 
                                                 next= {goNextStep}
@@ -87,6 +109,7 @@ const Form = () => {
                                                 sobrenome={dados.sobrenome}
                                                 email={dados.email}
                                                 tel={dados.tel}
+                                                isEmpty={alertOpen}
                                             />}
 
                             {step === 2 && <Endereco
@@ -96,6 +119,7 @@ const Form = () => {
                                                 cep= {dados.cep}
                                                 endereco1= {dados.endereco1}
                                                 endereco2= {dados.endereco2}
+                                                isEmpty={alertOpen}
                                             />}
 
                             {step === 3 && <Outros 
@@ -105,75 +129,15 @@ const Form = () => {
                                                 dataNascimento = {dados.dataNascimento}
                                                 cpf = {dados.cpf}
                                                 renda = {dados.renda}
+                                                isEmpty={alertOpen}
                                             />}
                         </FormContent>
                     </FormWrapper>
-                </FormCard>
+                </Container>
             </IconContext.Provider>
         </>
     )
 }
 
-function Dados(props){
-    return(
-        <>
-            <Label for="nome">Nome</Label>
-            <Input id="nome" name="nome" type="text" onChange={props.onChange} value={props.nome}/>
-
-            <Label for="sobrenome">Sobrenome</Label>
-            <Input id="sobrenome" name="sobrenome" type="text" onChange={props.onChange} value={props.sobrenome}/>
-
-            <Label for="email">E-mail</Label>
-            <Input id="email" name="email" type="email" onChange={props.onChange} value={props.email}/>
-
-            <Label for="tel">Telefone</Label>
-            <Input id="tel" name="tel" type="number" onChange={props.onChange} value={props.tel}/>
-
-            <ButtonWrapper>
-                <FormButton isNext={true} onClick={props.next}>Próximo</FormButton>
-            </ButtonWrapper>
-        </>
-    )
-}
-
-function Endereco(props){
-    return(
-        <>
-            <Label for="cep">CEP</Label>
-            <Input id="cep" name="cep" type="text" onChange={props.onChange} value={props.cep}/>
-
-            <Label for="endereco1">Endereço 1</Label>
-            <Input id="endereco1" name="endereco1" type="text" onChange={props.onChange} value={props.endereco1}/>
-
-            <Label for="endereco2">Endereço 2</Label>
-            <Input id="endereco2" name="endereco2" type="text" onChange={props.onChange} value={props.endereco2}/>
-            
-            <ButtonWrapper>
-                <FormButton isNext={false} onClick={props.back}>Voltar</FormButton>
-                <FormButton isNext={true} onClick={props.next}>Próximo</FormButton>
-            </ButtonWrapper>
-        </>
-    )
-}
-
-function Outros(props){
-    return(
-        <>
-           <Label for="dataNascimento">Data de Nascimento</Label>
-           <Input id="dataNascimento" name="dataNascimento" type="date" onChange={props.onChange} value={props.dataNascimento}/>
-
-           <Label for="cpf">CPF</Label>
-           <Input id="cpf" name="cpf" onChange={props.onChange} value={props.cpf} type="number"/>
-
-           <Label for="renda">(R$) Renda Mensal</Label>
-           <Input id="renda" name="renda" onChange={props.onChange} value={props.renda} type="number"/>
-           
-           <ButtonWrapper>
-               <FormButton isNext={false} onClick={props.back}>Voltar</FormButton>
-               <FormButton isNext={true} type="submit">Salvar</FormButton>
-           </ButtonWrapper>
-        </>
-    )
-}
 
 export default Form

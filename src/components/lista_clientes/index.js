@@ -1,18 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import { ListaContainer,
-    ListaH1,
-    ListaWrapper,
-    LinkLinha,
-    Linha,
-    Text } from './ListaClientesElements';
+import { Container,
+         CardH1,
+         ListaWrapper,
+         LinkLinha,
+         Linha,
+         Text} from './ClientesElements';
 import axios from 'axios';
 
-const ListaClientes = () => {
-
+const Index = () => {
     const [clientes, setClientes] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/clientes')
+        axios.get('/cliente')
             .then((response) => {
                 setClientes(response.data);
             });
@@ -21,21 +20,21 @@ const ListaClientes = () => {
 
     return (
         <>
-            <ListaContainer>
-                    <ListaH1>Lista de Clientes</ListaH1>
+            <Container>
                 <ListaWrapper>
-                    {clientes.map((cliente) => (
-                        <LinkLinha to={`/cliente/${cliente.id}`}>
+                    <CardH1>Lista de Clientes</CardH1>
+                    {clientes.map((cliente, i) => (
+                        <LinkLinha to={`/cliente/${cliente.id}`} key={i}>
                             <Linha>
                                 <Text>{cliente.nome} {cliente.sobrenome}</Text>
-                                <Text italic={true}>{cliente.tel}</Text>
+                                <Text estilo={"italico"}>{cliente.tel}</Text>
                             </Linha>
                         </LinkLinha>
                     ))}
                 </ListaWrapper>
-            </ListaContainer>
+            </Container>
         </>
     )
 }
 
-export default ListaClientes
+export default Index

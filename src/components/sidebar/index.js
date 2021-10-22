@@ -16,7 +16,7 @@ const SideBar = () => {
                             <FaUserPlus/>
                             <Links>Cadastro</Links> 
                         </SideBarLink>
-                        <SideBarLink to="/clientes">
+                        <SideBarLink to="/">
                             <FaUsers/>
                             <Links>Clientes</Links> 
                         </SideBarLink>
