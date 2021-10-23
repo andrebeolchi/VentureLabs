@@ -88,16 +88,17 @@ export const DataWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    background-color: ${Color.white};
+    background-color: ${Color.darkBlack};
     border-radius: 20px;
-    min-width: 600px;
-    width: fit-content;
+    width: 500px;
     
     -webkit-box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.5); 
     box-shadow: 5px 5px 15px -3px rgba(0,0,0,0.5);
 
+    color: ${Color.gray};
+    
     @media screen and (max-width: 768px){
-        width: 80%;
+        width: 90%;
     }
 `
 

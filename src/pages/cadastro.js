@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import SideBar from '../components/sidebar'
-import {BsArrowBarRight} from 'react-icons/bs'
+import {FaBars} from 'react-icons/fa'
 import {OpenIcon} from '../components/sidebar/SideBarElements'
 import Form from '../components/form'
 import {Content} from '../components/global/Styled'
@@ -17,7 +17,7 @@ const Index = () => {
             <Content>
                 <SideBar isOpen={isOpen} toggle={toggle}/>
                 <OpenIcon onClick={toggle}>
-                    <BsArrowBarRight style={{fontSize:"36px"}}/>
+                    <FaBars style={{fontSize:"24px"}}/>
                 </OpenIcon>
                 <Form/>
             </Content>

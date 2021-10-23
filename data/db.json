@@ -272,6 +272,19 @@
       "cpf": "394.303.528-06",
       "renda": "R$ 9050",
       "id": 6
+    },
+    {
+      "nome": "André Beolchi de",
+      "sobrenome": "Garbini",
+      "email": "andregarbini2001@gmail.com",
+      "tel": "(11) 96834-9464",
+      "cep": "04072-030",
+      "endereco1": "Rua Miquelino Gabriel Fraga",
+      "endereco2": "Rua Miquelino Gabriel Fraga",
+      "dataNascimento": "28/02/2003",
+      "cpf": "777.526.700-30",
+      "renda": "R$ 5000",
+      "id": 7
     }
   ]
 }
