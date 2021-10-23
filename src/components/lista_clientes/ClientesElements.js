@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import {Color} from '../global/Color'
 
 // var iHeight = window.innerHeight()
-
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
@@ -15,11 +14,11 @@ export const Container = styled.div`
 `
 
 export const ListaWrapper = styled.div`
-    background-color: ${Color.white};
+    background-color: ${Color.darkBlack};
     border-radius: 8px;
     padding: 16px;
     min-width: 80%;;
-    max-height: 60vh;
+    height: 60vh;
     overflow-y: auto;
 
     ::-webkit-scrollbar{
@@ -27,11 +26,16 @@ export const ListaWrapper = styled.div`
         height: 5px;
     }
     ::-webkit-scrollbar-thumb{
-        background: ${Color.darkgray};
+        background: ${Color.blue};
         border-radius: 16px;
     }
     ::-webkit-scrollbar-thumb:hover{
         background: #919191;
+    }
+
+    @media screen and (max-width: 768px){
+        width: 90%;
+        height: 80%;
     }
 `
 
@@ -44,8 +48,12 @@ export const Linha = styled.div`
     border-bottom: 1px solid ${Color.gray};
     
     &:hover{
-        background: ${Color.lightgray};
+        background: ${Color.black};
         font-weight: 600;
+    }
+
+    @media screen and (max-width: 768px){
+        flex-direction: column;
     }
 `
 
@@ -55,11 +63,12 @@ export const CardH1 = styled.h1`
     font-size: 24px;
     text-align: center;
     margin-bottom: 24px;
+    color: ${Color.white};
 `
 
 export const LinkLinha = styled(Link)`
     text-decoration: none;
-    color: ${Color.black};
+    color: ${Color.white};
     font-weight: 400;
     cursor: pointer;
 `
@@ -67,6 +76,10 @@ export const LinkLinha = styled(Link)`
 export const Text = styled.p`
     font-style: ${({estilo}) => (estilo === "italico" ? "italic" : "normal")};
     font-weight: ${({estilo}) => (estilo === "negrito" ? "bold" : "normal")};
+    
+    @media screen and (max-width: 768px){
+        margin: 2px 0;
+    }
 `
 
 // Dados.js

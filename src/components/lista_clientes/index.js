@@ -21,8 +21,8 @@ const Index = () => {
     return (
         <>
             <Container>
-                <ListaWrapper>
                     <CardH1>Lista de Clientes</CardH1>
+                <ListaWrapper>
                     {clientes.map((cliente, i) => (
                         <LinkLinha to={`/cliente/${cliente.id}`} key={i}>
                             <Linha>
