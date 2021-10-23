@@ -64,6 +64,19 @@
       "cpf": "526.304.728-25",
       "renda": "R$ 0",
       "id": 5
+    },
+    {
+      "nome": "André",
+      "sobrenome": "Garbini",
+      "email": "andregarbini2001@gmail.com",
+      "tel": "(11) 96834-9464",
+      "cep": "04072-030",
+      "endereco1": "Rua Miquelino Gabriel Fraga",
+      "endereco2": "Rua Miquelino Gabriel Fraga",
+      "dataNascimento": "27/07/2001",
+      "cpf": "394.303.528-06",
+      "renda": "R$ 9050",
+      "id": 6
     }
   ]
 }
