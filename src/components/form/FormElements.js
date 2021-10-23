@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {Color} from '../global/Color';
-import InputMask from 'react-input-mask'
 
 var iHeight = window.innerHeight;
 

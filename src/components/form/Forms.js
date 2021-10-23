@@ -44,7 +44,7 @@ export function Dados(props){
                    onChange={props.onChange}
                    value={props.tel}
                    isEmpty={props.isEmpty}/>
-            <MiniExample>DDD + Número - Ex.: XX XXXXX XXXX</MiniExample>
+            <MiniExample>Ex.: XX 9XXXX XXXX</MiniExample>
 
             <ButtonWrapper>
                 <FormButton isPrimary={true} type="button" onClick={props.next}>Próximo</FormButton>
@@ -63,7 +63,7 @@ export function Endereco(props){
                    onChange={props.onChange}
                    value={props.cep}
                    isEmpty={props.isEmpty}/>
-            <MiniExample>Somente números - Ex.: XXXXX-XXX</MiniExample>
+            <MiniExample>Ex.: XXXXX-XXX</MiniExample>
 
             <Label htmlFor="endereco1">Endereço 1</Label>
             <Input id="endereco1"
@@ -116,16 +116,17 @@ export function Outros(props){
                   name="cpf"
                   onChange={props.onChange}
                   value={props.cpf}
-                  type="number"
-                  isEmpty={props.isEmpty}/>
-           <MiniExample>Somente Dígitos - Ex.: XXX XXX XXX XX</MiniExample>
+                  type="text"
+                  isEmpty={props.isEmpty}
+                  minLength="11"/>
+           <MiniExample>Ex.: XXX . XXX . XXX - XX</MiniExample>
 
            <Label htmlFor="renda">(R$) Renda Mensal</Label>
            <Input id="renda"
                   name="renda"
                   onChange={props.onChange}
                   value={props.renda}
-                  type="number"
+                  type="text"
                   isEmpty={props.isEmpty}/>
             <MiniExample>Somente Dígitos - Ex.: XXXX</MiniExample>
            

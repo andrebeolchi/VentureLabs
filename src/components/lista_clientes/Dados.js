@@ -4,6 +4,7 @@ import {Container,
         DataWrapper,
         RowWrapper,
         Text} from './ClientesElements';
+import axios from 'axios';
 
 const Dados = (props) => {
     var id = props.id;
@@ -12,11 +13,10 @@ const Dados = (props) => {
     
     useEffect(() => {
         if (id) {
-            fetch("/cliente/"+id)
+            axios.get("/cliente/"+id)
             .then((response) => {
-                return response.json()
-            }).then((response) => {
-                setValor(response)
+                console.log(response.data);
+                setValor(response.data);
             })
         }
     }, [])

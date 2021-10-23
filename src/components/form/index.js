@@ -11,6 +11,7 @@ import { Container,
          StepName,
          FormContent} from './FormElements';
 import { Dados, Endereco, Outros} from './Forms';
+import { maskCep, maskTel, maskRenda, maskCpf, maskData } from '../../utils/masks';
 
 const Form = () => {
     const [step, setStep] = useState(1);
@@ -38,11 +39,13 @@ const Form = () => {
                 if ((dados.nome === "") || (dados.sobrenome === "") || (dados.email === "") || (dados.tel === "")){
                     return setAlertOpen(true)
                 } else {
+                    dados.tel = maskTel(dados.tel)
                     setAlertOpen(false)
                     return setStep((step) => step + 1);
                     }
             case 2:
-                if ((dados.cep === "") || (dados.endereco1 === "") || (dados.endereco2 === "")){
+                if ((dados.cep === "") || (dados.endereco1 === "")){
+                    dados.cep = maskCep(dados.cep)
                     return setAlertOpen(true)
                 } else {
                     setAlertOpen(false)
@@ -73,6 +76,9 @@ const Form = () => {
         if ((dados.dataNascimento === "") || (dados.cpf === "") || (dados.renda === "")){
             return setAlertOpen(true)
         } else {
+            dados.dataNascimento = maskData(dados.dataNascimento)
+            dados.cpf = maskCpf(dados.cpf)
+            dados.renda = maskRenda(dados.renda)
             axios.post('http://localhost:8000/cliente', dados)
             .then((response) => {
                 history.push('/');

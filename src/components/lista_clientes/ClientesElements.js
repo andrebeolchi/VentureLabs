@@ -65,7 +65,7 @@ export const LinkLinha = styled(Link)`
 `
 
 export const Text = styled.p`
-    font-style: ${({estilo}) => (estilo == "italico" ? "italic" : "normal")};
+    font-style: ${({estilo}) => (estilo === "italico" ? "italic" : "normal")};
     font-weight: ${({estilo}) => (estilo === "negrito" ? "bold" : "normal")};
 `
 
