@@ -30,13 +30,13 @@ export const SideBarLink = styled(Link)`
     
     transition: all 0.2s;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
     color: ${Color.white};
     
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+
     
     &:hover{
         color: ${Color.blue};
