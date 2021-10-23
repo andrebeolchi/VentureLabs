@@ -1,15 +1,17 @@
 import {Switch, Route} from 'react-router-dom'
 import React from 'react'
 import Index from '../../pages/index.js'
-import Cadastro from '../../pages/Cadastro.js'
+import Clientes from '../../pages/Clientes.js'
 import Cliente from '../../pages/Cliente.js'
+import Cadastro from '../../pages/Cadastro.js'
 
 const Rotas = () => {
     return (
         <Switch>
             <Route path="/" exact component={ Index }/>
-            <Route path="/cadastro" component={ Cadastro }/>
+            <Route path="/clientes/" component={ Clientes }/>
             <Route path="/cliente/:id" component={ Cliente }/>
+            <Route path="/cadastro" component={ Cadastro }/>
         </Switch>
     )
 }
