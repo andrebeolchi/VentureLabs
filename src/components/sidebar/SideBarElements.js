@@ -9,7 +9,7 @@ export const SideBarContainer = styled.div`
 
     background-color: ${Color.black};
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 1024px){
         position: fixed;
         top:0;
         right: ${({isOpen}) => (isOpen ? '100%' : '0%')};
@@ -64,7 +64,7 @@ export const CloseIcon = styled.p`
     &:hover{
         color: ${Color.blue}
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1025px) {
         display: none;
     }
 `
@@ -81,7 +81,7 @@ export const OpenIcon = styled.p`
         color: ${Color.blue}
     }
     
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1025px) {
         display: none;
     }
 `
