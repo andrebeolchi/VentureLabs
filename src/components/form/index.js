@@ -81,7 +81,7 @@ const Form = () => {
             dados.renda = maskRenda(dados.renda)
             axios.post('http://localhost:8000/cliente', dados)
             .then((response) => {
-                history.push('/');
+                history.push('/clientes');
             });
         }
     }
