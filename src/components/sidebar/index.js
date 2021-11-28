@@ -1,22 +1,34 @@
 import React from 'react'
-import {FaUserPlus, FaUsers} from 'react-icons/fa'
+import {FaUsers} from 'react-icons/fa'
+import {AiFillHome,} from 'react-icons/ai'
+import {ImPlus} from 'react-icons/im'
+import {MdClose} from 'react-icons/md'
 import { IconContext } from 'react-icons/lib';
 import { SideBarContainer,
          SideBarWrapper,
          SideBarLink,
-         Links} from './SideBarElements.js'
+         Links,
+         CloseIcon} from './SideBarElements.js'
 
-const SideBar = () => {
+
+const SideBar = ({isOpen, toggle}) => {
     return (
         <>
-            <IconContext.Provider value={{size: 24}}>
-                <SideBarContainer>
+            <IconContext.Provider value={{size: "24px"}}>
+                <SideBarContainer isOpen={isOpen}>
+                    <CloseIcon onClick={toggle}>
+                        <MdClose/>
+                    </CloseIcon>
                     <SideBarWrapper>
-                        <SideBarLink to="/cadastro">
-                            <FaUserPlus/>
+                        <SideBarLink to="/" onClick={toggle}>
+                            <AiFillHome/>
+                            <Links>Home</Links> 
+                        </SideBarLink>
+                        <SideBarLink to="/cadastro" onClick={toggle}>
+                            <ImPlus/>
                             <Links>Cadastro</Links> 
                         </SideBarLink>
-                        <SideBarLink to="/clientes">
+                        <SideBarLink to="/clientes" onClick={toggle}>
                             <FaUsers/>
                             <Links>Clientes</Links> 
                         </SideBarLink>
